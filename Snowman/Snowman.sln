@@ -1,14 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowman", "Assembly-CSharp-firstpass.csproj", "{D2B0EFF0-C48D-4A48-D7BB-D3F7B0C2C42F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowman", "Assembly-CSharp-Editor-firstpass.csproj", "{D1B5870D-8171-0931-997D-CC7EA9D876E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{D2B0EFF0-C48D-4A48-D7BB-D3F7B0C2C42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B0EFF0-C48D-4A48-D7BB-D3F7B0C2C42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B0EFF0-C48D-4A48-D7BB-D3F7B0C2C42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B0EFF0-C48D-4A48-D7BB-D3F7B0C2C42F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1B5870D-8171-0931-997D-CC7EA9D876E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1B5870D-8171-0931-997D-CC7EA9D876E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1B5870D-8171-0931-997D-CC7EA9D876E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1B5870D-8171-0931-997D-CC7EA9D876E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
