@@ -1,0 +1,8 @@
+Images:
+Astronaut suit: http://vignette1.wikia.nocookie.net/clubpenguin/images/8/81/Purple_Space_Suit.png/revision/latest?cb=20150105010556
+Flag: http://www.flags.net/images/largeflags/UNST0001.GIF
+Helmet: https://image.spreadshirtmedia.com/image-server/v1/mp/compositions/T48A1PA78PT17X62Y40D1009267317S29/views/1,width=300,height=300,appearanceId=1,backgroundColor=E8E8E8/astronaut-helmet-kids-t-shirt.jpg
+Moon: https://img14.deviantart.net/c5da/i/2007/092/d/a/moon_floor_2_by_jaqx_textures.jpg
+Snow: https://images.designtrends.com/wp-content/uploads/2016/11/05140457/White-Snow-Texture.jpg
+Space: https://i.ytimg.com/vi/lt0WQ8JzLz4/maxresdefault.jpg
+Stars: https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Magellanic_Clouds_%E2%80%95_Irregular_Dwarf_Galaxies.jpg/1920px-Magellanic_Clouds_%E2%80%95_Irregular_Dwarf_Galaxies.jpg
