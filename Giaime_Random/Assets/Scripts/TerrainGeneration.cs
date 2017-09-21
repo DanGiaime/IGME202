@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TerrainGeneration : MonoBehaviour {
 
-	public TerrainCollider collider;
 	private TerrainData myTerrainData;
 	public Vector3 worldSize = new Vector3(200, 50, 200);
 	public int resolution = 128;
@@ -14,15 +13,16 @@ public class TerrainGeneration : MonoBehaviour {
 	void Start () {
 	}
 
-	public void generate() {
+	public void generate(TerrainCollider collider) {
 		myTerrainData = collider.terrainData; 
 
-		myTerrainData.size = worldSize;
 		myTerrainData.heightmapResolution = resolution;
 		float[,] heightArray = new float[resolution, resolution];
 		makeZero (heightArray);
 		makePerlin (heightArray, resolution);
 		myTerrainData.SetHeights (0, 0, heightArray);
+		myTerrainData.size = worldSize;
+
 	}
 
 	void makeZero(float[,] heights) {
