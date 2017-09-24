@@ -10,6 +10,9 @@ public class CameraScript : MonoBehaviour {
 	// Current camera 
 	private int currentCameraIndex;
 
+    // Current cameraName
+    private string name;
+
 
 	// Use this for initialization
 	void Start () 
@@ -28,6 +31,7 @@ public class CameraScript : MonoBehaviour {
 		if (cameras.Length > 0)
 		{
 			cameras [0].gameObject.SetActive (true);
+            name = "Press C to \n change camera \n\n" + cameras[0].name;
 		}
 	}
 
@@ -54,6 +58,13 @@ public class CameraScript : MonoBehaviour {
 				currentCameraIndex = 0;
 				cameras[currentCameraIndex].gameObject.SetActive(true);
 			}
-		}
-	}
+
+            name = "Press C to \n change camera \n\n" + cameras[currentCameraIndex].name;
+        }
+    }
+
+    private void OnGUI()
+    {
+        GUI.Button(new Rect(10, 10, 150, 100), name);
+    }
 }

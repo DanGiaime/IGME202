@@ -1,0 +1,35 @@
+Name:
+
+	Daniel Giaime - Section 04
+
+Project: 
+	
+	Random
+
+Project Description:
+	
+	This project showcases the different types of randomness that can be applied to games.
+	The project showcases classic randomness, non-uniform randomness, and guassian randomness.
+
+	Blocks are randomly spawned across the map, non-uniformly spawned in a horde, and scaled using a
+	gaussian distribution in a line.
+
+User Responsibilities:
+
+	Press C to change camera view. Move with WASD.
+
+Above and Beyond:
+
+	Implemented my own Gaussian formula instead of using the given transformation.
+
+Caveats or Known Issues:
+
+	The cameras will sometimes be underneath the terrain. This can be solved by regenerating the terrain.
+
+	The firstPersonController will sometimes fall slightly below ground. I am not sure why this happens.
+
+Notes:
+
+	N/A
+
+	
