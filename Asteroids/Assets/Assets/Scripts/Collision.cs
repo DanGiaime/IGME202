@@ -4,39 +4,24 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour {
 
-	private SpriteRenderer[] sprites;
+	public List<SpriteRenderer> sprites;
 	public SpriteRenderer player;
 	private Life lifeScript;
 
-	bool aabb;
-
 	// Use this for initialization
 	void Start () {
-		sprites = gameObject.GetComponentsInChildren<SpriteRenderer> ();
+		sprites = new List<SpriteRenderer>(gameObject.GetComponentsInChildren<SpriteRenderer> ());
 		lifeScript = gameObject.GetComponent<Life> ();
-		aabb = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (Input.GetKey (KeyCode.Alpha1)) {
-			aabb = true;
-		}
-		else if (Input.GetKey (KeyCode.Alpha2)) {
-			aabb = false;
-		}
-
-		if (aabb) {
-			AABB ();
-		} else {
-			BoundingCircle ();
-		}
+		BoundingCircle ();
 	}
 
 	void AABB() {
-		for (int i = 0; i < sprites.Length; i++) {
-			for (int j = i + 1; j < sprites.Length; j++) {
+		for (int i = 0; i < sprites.Count; i++) {
+			for (int j = i + 1; j < sprites.Count; j++) {
 				bool collided = true;
 				Vector3 center1 = sprites [i].bounds.center;
 				Vector3 center2 = sprites [j].bounds.center;
@@ -56,25 +41,24 @@ public class Collision : MonoBehaviour {
 					if (sprites [j] != player) {
 						sprites [j].color = Color.red;
 					}
-					if (sprites[i] == player || sprites[j] == player) {
+					if (sprites [i] == player || sprites [j] == player) {
 						lifeScript.DecrementLife ();
 					}
-						
+					break;	
 				} else {
-					if (sprites [i] != player) {
-						sprites [i].color = Color.white;
-					}
-					if (sprites [j] != player) {
-						sprites [j].color = Color.white;
-					}
+					sprites [i].color = Color.white;
+
 				}
 			}
 		}
+			
 	}
 
 	void BoundingCircle() {
-		for (int i = 0; i < sprites.Length; i++) {
-			for (int j = i + 1; j < sprites.Length; j++) {
+		for (int i = 0; i < sprites.Count; i++) {
+			for (int j = 0; j < sprites.Count; j++) {
+				if (i == j)
+					continue;
 				bool collided = true;
 				Vector3 center1 = sprites [i].bounds.center;
 				Vector3 center2 = sprites [j].bounds.center;
@@ -82,7 +66,9 @@ public class Collision : MonoBehaviour {
 				float radius2 = sprites [j].bounds.extents.x;
 				if (Vector3.Distance (center1, center2) < radius1 + radius2) {
 					sprites [i].color = Color.red;
-					sprites [j].color = Color.red;
+					break;
+				} else {
+					sprites [i].color = Color.white;
 				}
 			}
 		}

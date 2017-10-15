@@ -30,6 +30,8 @@ public class Vehicle : MonoBehaviour
 	public float height;
 	public float width;
 
+	public GameObject bullet;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -86,19 +88,25 @@ public class Vehicle : MonoBehaviour
 			acceleration = accelRate * direction;
 			velocity += acceleration;
 		} else{
-			velocity *= .99f;
+			velocity *= .999999f;
 		}
 
 		vehiclePosition.x = (vehiclePosition.x > 0)  ? vehiclePosition.x % width : width;
 		vehiclePosition.y = (vehiclePosition.y > 0)  ? vehiclePosition.y % height : height;
 
 
-		vehiclePosition += velocity;
+		vehiclePosition += velocity * Time.deltaTime;
 		velocity = Vector3.ClampMagnitude (velocity, maxSpeed);
 
 
 		// Set the transform component to the vehicle's position vector
 		transform.position = vehiclePosition;
 		transform.rotation = Quaternion.Euler (0, 0, totalRotation);
+
+		if(Input.GetKey(KeyCode.Space))
+		{
+			// rotate left, positive rotation
+			Instantiate(bullet, transform.position, transform.rotation, transform);
+		}
 	}
 }
