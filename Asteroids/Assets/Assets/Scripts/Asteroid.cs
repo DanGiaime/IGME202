@@ -14,6 +14,6 @@ public class Asteroid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (velocity * Time.deltaTime);
+		transform.position += velocity * Time.deltaTime;
 	}
 }

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	private Vector3 velocity;
+	public Vector3 velocity;
+	public float rotation;
+	private float speed = 10.0f;
 
 	// Use this for initialization
 	void Start () {
-		velocity = gameObject.GetComponentInParent<Vehicle>().velocity;
+		velocity = (transform.up) * speed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (velocity * Time.deltaTime);
+		transform.position += velocity * Time.deltaTime;
 	}
+
 }

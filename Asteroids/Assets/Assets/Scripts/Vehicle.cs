@@ -103,10 +103,10 @@ public class Vehicle : MonoBehaviour
 		transform.position = vehiclePosition;
 		transform.rotation = Quaternion.Euler (0, 0, totalRotation);
 
-		if(Input.GetKey(KeyCode.Space))
+		if(Input.GetKeyDown(KeyCode.Space))
 		{
 			// rotate left, positive rotation
-			Instantiate(bullet, transform.position, transform.rotation, transform);
+			GameObject bulletObject = Instantiate(bullet, transform.position, transform.rotation);
 		}
 	}
 }
