@@ -25,6 +25,7 @@ public class Vehicle : MonoBehaviour
 	// Fields for movement
 	public float anglePerFrame;			// 1f
 	public float totalRotation;			// 0f
+	public float bulletTimer;
 
 	public Camera myCamera;
 	public float height;
@@ -53,6 +54,12 @@ public class Vehicle : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+
+		if (bulletTimer > 0) {
+			bulletTimer -= Time.deltaTime;
+		} else {
+			bulletTimer = 0;
+		}
 		// Step 1: Add speed to the X and Y components of the vector
 		// Add speed to X and Y values
 		//vehiclePosition.x += speed;
@@ -107,9 +114,12 @@ public class Vehicle : MonoBehaviour
 
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			// rotate left, positive rotation
-			GameObject bulletObject = Instantiate(bullet, transform.position, transform.rotation);
-			sceneManager.GetComponent<Collision> ().AddBullet(bulletObject);
+			if (bulletTimer == 0) {
+				GameObject bulletObject = Instantiate(bullet, transform.position, transform.rotation);
+				sceneManager.GetComponent<Collision> ().AddBullet(bulletObject);
+				bulletTimer = 1.0f;
+
+			}
 		}
 	}
 }

@@ -70,8 +70,8 @@ public class Collision : MonoBehaviour {
 		Bounds bBounds = b.GetComponent<SpriteRenderer>().bounds;
 		Vector3 aCenter = aBounds.center;
 		Vector3 bCenter = bBounds.center;
-		float aRadius = aBounds.extents.x;
-		float bRadius = bBounds.extents.x;
+		float aRadius = aBounds.extents.y;
+		float bRadius = bBounds.extents.y;
 
 		//Check if collided
 		bool collided = (aRadius + bRadius > Vector3.Distance (aCenter, bCenter));
