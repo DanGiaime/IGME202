@@ -30,6 +30,8 @@ public class Vehicle : MonoBehaviour
 	public float height;
 	public float width;
 
+	public GameObject sceneManager;
+
 	public GameObject bullet;
 
 	// Use this for initialization
@@ -107,6 +109,7 @@ public class Vehicle : MonoBehaviour
 		{
 			// rotate left, positive rotation
 			GameObject bulletObject = Instantiate(bullet, transform.position, transform.rotation);
+			sceneManager.GetComponent<Collision> ().AddBullet(bulletObject);
 		}
 	}
 }

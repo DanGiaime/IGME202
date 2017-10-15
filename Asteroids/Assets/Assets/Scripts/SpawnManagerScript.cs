@@ -26,15 +26,23 @@ public class SpawnManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+		// Decide whether or not to spawn an asteroid this frame
 		float shouldSpawn = Random.Range (0.0f, 1.0f);
+
+		//Spawn on if we should
 		if (shouldSpawn < spawnFreq) {
-			sceneManager.GetComponent<Collision> ().sprites.Add(SpawnRandom ().GetComponent<SpriteRenderer>());
+			sceneManager.GetComponent<Collision> ().AddAsteroid(SpawnRandom ());
 		}
 	}
 
 	public GameObject SpawnRandom() {
+
+		//Decide which asteroid to spawn
 		float rand = Random.Range (0.0f, 1.0f);
 		GameObject prefab = null;
+
+		//Set prefab accordingly
 		if (rand < percentSmall) {
 			prefab = asteroidSmall;
 		} else if (rand < percentSmall + percentMedium) {
@@ -43,6 +51,7 @@ public class SpawnManagerScript : MonoBehaviour {
 			prefab = asteroidLarge;
 		} 
 
+		//Decide where to spawn asteroid
 		int sideOrTop = Random.Range (0, 2);
 		int whichSide = Random.Range (0, 2);
 
@@ -54,8 +63,10 @@ public class SpawnManagerScript : MonoBehaviour {
 			yVel = Random.Range (0, height);
 		}
 
+		//Give asteroid a random position
 		Vector3 position = new Vector3 (xVel,yVel,0);
 
+		// Instantiate and return asteroid
 		return Instantiate (prefab, position, Quaternion.identity, sceneManager.transform); 
 	}
 }
