@@ -1,0 +1,27 @@
+Dan Giaime
+IGME 202, Section 4
+
+Assignment:  
+Asteroids
+
+Description:  
+This project is a clone of the game asteroids.
+
+User Responsibilities:
+User must move used arrow keys, and shoot using the space bar.
+
+Above and Beyond:
+I implemented all collisions using a Quad Tree. This Quad Tree can be seen if you open the game in the actual Uniy editor, hit play, press D, and go to the "Scene" view.
+I could not for the life of me figure out how to draw lines in the actual game otherwise, unfortunately. Feel free to check through the QuadTreeNode,cs file to see ohw it all works.
+
+Known Issues:
+- Sometimes slow during spawns
+- Actual Quad Tree extends a bit off screen (this is intentional to ensure all objects on screen are contained. Not sure if this is actually considered an issue).
+
+Notes:
+Quad Trees are awesome. If you haven't seen one before, I know grading can get tiring, but it might be worthwhile to actually open the project to see it this one time.
+I feel it's a lot easier to appreciate the project that way.
+
+Sources:
+- Ship || https://opengameart.org/content/simple-spaceship-0
+- Planet || https://opengameart.org/content/nine-planet-types   
