@@ -52,10 +52,8 @@ public class Asteroid : MonoBehaviour {
 						Random.Range(-variation, variation), 
 						0));
 			}
-			Destroy (gameObject);
 			return smallerAsteroids;
 		} else {
-			Destroy (gameObject);
 			return null;
 		}
 	}

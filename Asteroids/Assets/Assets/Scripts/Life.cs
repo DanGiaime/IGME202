@@ -8,10 +8,11 @@ public class Life : MonoBehaviour {
 	private float currinvincibilityTime;
 	public float invincibilityTime;
 	public int lives;
+	public int score;
 
 	// Use this for initialization
 	void Start () {
-		
+		score = 0;
 	}
 	
 	// Update is called once per frame
@@ -32,10 +33,12 @@ public class Life : MonoBehaviour {
 		}
 		if (lives == 0) {
 			lives = 3;
+			score = 0;
 		}
 	}
 
 	void OnGUI() {
 		GUI.Label (new Rect(10, 10, 100, 20), "You have " + lives + " lives.");
+		GUI.Label (new Rect(10, 20, 100, 20), "Score: " + score);
 	}
 }

@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Assets\Scripts\Collision.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Assets/Scripts/Collision.cs">
     <Files>
-      <File FileName="Assets\Assets\Scripts\Vehicle.cs" Line="109" Column="90" />
-      <File FileName="Assets\Assets\Scripts\Collision.cs" Line="31" Column="50" />
-      <File FileName="Assets\Assets\Scripts\Life.cs" Line="34" Column="14" />
-      <File FileName="Assets\Assets\Scripts\Asteroid.cs" Line="17" Column="51" />
-      <File FileName="Assets\Assets\Scripts\Bullet.cs" Line="9" Column="26" />
-      <File FileName="Assets\Assets\Scripts\SpawnManagerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Assets/Scripts/Collision.cs" Line="49" Column="3" />
+      <File FileName="Assets/Assets/Scripts/Asteroid.cs" Line="1" Column="1" />
+      <File FileName="Assets/Assets/Scripts/Bullet.cs" Line="1" Column="1" />
+      <File FileName="Assets/Assets/Scripts/Life.cs" Line="1" Column="1" />
+      <File FileName="Assets/Assets/Scripts/QuadTreeNode.cs" Line="1" Column="1" />
+      <File FileName="Assets/Assets/Scripts/SpawnManagerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Assets/Scripts/Vehicle.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
