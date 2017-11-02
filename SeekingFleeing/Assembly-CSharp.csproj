@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{ED3D4A1D-AC2E-A459-CDCD-49BE8F9A09E3}</ProjectGuid>
+    <ProjectGuid>{6387A7B6-9EA3-BE2E-2E2D-817E8475C474}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,8 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Agent.cs" />
      <Compile Include="Assets\Scripts\Forces.cs" />
+     <Compile Include="Assets\Scripts\Human.cs" />
      <Compile Include="Assets\Scripts\Vehicle.cs" />
+     <Compile Include="Assets\Scripts\Zombie.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity 560f3/Unity 560f3.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

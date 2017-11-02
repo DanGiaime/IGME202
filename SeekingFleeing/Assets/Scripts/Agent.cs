@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Agent : Vehicle {
+public abstract class Agent : Vehicle {
+
+	public float seekWeight = 2f;
+	public float fleeWeight = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -14,19 +17,21 @@ public class Agent : Vehicle {
         base.Update();
 	}
 
-    public void Seek(GameObject target)
+    public Vector3 Seek(GameObject target)
     {
-        Vector2 desiredVelocity = (Vector2)target.transform.position - this.position;
+        Vector3 desiredVelocity = target.transform.position - this.position;
         desiredVelocity = desiredVelocity.normalized * this.maxSpeed;
-        Vector2 seekForce = desiredVelocity - this.velocity;
-        this.ApplyForce(seekForce);
+        Vector3 seekForce = desiredVelocity - this.velocity;
+        return seekWeight * seekForce;
     }
 
-    public void Flee(GameObject target)
+    public Vector3 Flee(GameObject target)
     {
-        Vector2 desiredVelocity = this.position - (Vector2)target.transform.position;
+        Vector3 desiredVelocity = this.position - target.transform.position;
         desiredVelocity = desiredVelocity.normalized * this.maxSpeed;
-        Vector2 fleeForce = desiredVelocity - this.velocity;
-        this.ApplyForce(fleeForce);
+        Vector3 fleeForce = desiredVelocity - this.velocity;
+        return fleeWeight * fleeForce;
     }
+
+	public abstract void CalcSteeringForces();
 }

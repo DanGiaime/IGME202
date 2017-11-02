@@ -6,67 +6,77 @@ using UnityEngine;
 public class Forces : MonoBehaviour {
 
 	Vehicle[] children;
-	public GameObject smallPrefab;
-	public GameObject mediumPrefab;
-	public GameObject largePrefab;
+	public GameObject zombie;
+	public GameObject human;
+	public GameObject PSG;
 
-    private GameObject moving;
-    private GameObject still;
+    private List<GameObject> zombies;
+    private List<GameObject> humans;
 
-	const float MAX_X = 5f;
-	const float MIN_X = -5f;
-	const float MAX_Y = 5f;
-	const float MIN_Y = -5f;
-	bool flee = true;
+	const float MAX_X = 100f;
+	const float MIN_X = 0f;
+	const float MAX_Y = 100f;
+	const float MIN_Y = 0f;
 
 	// Use this for initialization
 	void Start () {
-		this.moving = Instantiate (smallPrefab, randomPosition(), Quaternion.identity, transform);
-        this.moving.transform.Rotate(0,0,Random.Range(0f, 6.28f));
-        this.moving.GetComponentInChildren<Vehicle>().Mass = 1f;
-        this.moving.transform.localScale = new Vector3(1, 1, 1);
-        this.still = Instantiate (mediumPrefab, randomPosition(), Quaternion.identity, transform);
-        this.still.transform.Rotate(0, 0, Random.Range(0f, 6.28f));
-        this.still.GetComponentInChildren<Vehicle>().Mass = 5f;
-        this.still.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+		zombies = new List<GameObject> ();
+		humans = new List<GameObject> ();
 
-		children = this.GetComponentsInChildren<Vehicle> ();
+		for (int i = 0; i < 5; i++) {
+			GameObject newZombie = Instantiate (zombie, randomPosition (), Quaternion.identity, transform);
+			newZombie.transform.Rotate (0, 0, Random.Range (0f, 6.28f));
+			newZombie.GetComponentInChildren<Agent> ().Mass = 1f;
+			zombies.Add(newZombie);
+
+			GameObject newHuman = Instantiate (human, randomPosition(), Quaternion.identity, transform);
+			newHuman.transform.Rotate(0, 0, Random.Range(0f, 6.28f));
+			newHuman.GetComponentInChildren<Agent>().Mass = 1f;
+			humans.Add(newHuman);
+			newHuman.GetComponent<Human> ().PSG = this.PSG;
+
+			newZombie.GetComponent<Zombie> ().humanTarget = newHuman;
+			newHuman.GetComponent<Human> ().zombieClosest = newZombie;
+		}
+			
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            flee = true;
-            Debug.Log("Fleeing");
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            flee = false;
-            Debug.Log("Steering");
-        }
 
-        if(flee)
-        {
-            this.moving.GetComponent<Agent>().Flee(still);
-        }
-        else
-        {
-            this.moving.GetComponent<Agent>().Seek(still);
-        }
-
-        foreach (Vehicle v in children) {
-			v.Bounce ();
+		//Find closest humans
+		foreach (GameObject z in zombies) {
+			float minDist = Vector3.Distance (z.transform.position, humans [0].transform.position);
+			GameObject closestHuman = humans [0];
+			foreach (GameObject human in humans) {
+				float newDist = Vector3.Distance (z.transform.position, human.transform.position);
+				if (newDist < minDist) {
+					minDist = newDist;
+					closestHuman = human;
+				}
+			}
+			z.GetComponent<Zombie> ().humanTarget = closestHuman;
 		}
 
-        if(Vector2.Distance(moving.transform.position, still.transform.position) < 2f)
-        {
-            still.GetComponent < Vehicle>().position = randomPosition();
-        }
+		//Fund closest zombies
+		foreach (GameObject h in humans) {
+			float minDist = Vector3.Distance (h.transform.position, zombies [0].transform.position);
+			GameObject closestZombie = zombies [0];
+			foreach (GameObject zombie in humans) {
+				float newDist = Vector3.Distance (h.transform.position, zombie.transform.position);
+				if (newDist < minDist) {
+					minDist = newDist;
+					closestZombie = human;
+				}
+			}
+			h.GetComponent<Human> ().zombieClosest = closestZombie;
+		}
+
         
 	}
 
-	Vector2 randomPosition() {
-		return new Vector2 (Random.Range(MIN_X, MAX_X), Random.Range(MIN_Y, MAX_Y));
+	Vector3 randomPosition() {
+		return new Vector3 (Random.Range(MIN_X, MAX_X), 0, Random.Range(MIN_Y, MAX_Y));
 	}
 }
