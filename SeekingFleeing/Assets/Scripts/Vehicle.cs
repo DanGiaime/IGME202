@@ -10,12 +10,6 @@ public abstract class Vehicle : MonoBehaviour {
     public float maxSpeed = 3f;
 	private float mass = 2f;
 	public bool friction = true;
-	public float minX;
-	public float maxX;
-	public float minY;
-	public float maxY;
-
-    public string text;
 
     // Use this for initialization
     protected void Start () {
@@ -26,21 +20,17 @@ public abstract class Vehicle : MonoBehaviour {
 		float vertExtent = Camera.main.orthographicSize;    
 		float horzExtent = vertExtent * Screen.width / Screen.height;
 
-		// Calculations assume map is position at the origin
-//		minX = Camera.main.transform.position.x - horzExtent;
-//		maxX = Camera.main.transform.position.x + horzExtent;
-//		minY = Camera.main.transform.position.x - vertExtent;
-//		maxY = Camera.main.transform.position.x + vertExtent;
 
 	}
 
     // Update is called once per frame
     protected void Update () {
 		velocity += acceleration * Time.deltaTime;
+		velocity.y = 0;
 		position += velocity * Time.deltaTime;
 		transform.position = new Vector3(position.x, 0, position.z);
 		acceleration = Vector3.zero;
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x));
+        transform.rotation = Quaternion.Euler(0, Mathf.Rad2Deg * Mathf.Atan2(velocity.x, velocity.z), 0);
 	}
 
 	public void ApplyForce(Vector3 force) {
