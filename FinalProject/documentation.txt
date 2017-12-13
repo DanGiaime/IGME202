@@ -1,0 +1,60 @@
+About your project
+Name - Daniel Giaime
+Your section - 04
+
+
+Description of World:  
+What kind of environment is your world?  What does it look like?  
+        My world is a costal area, with two main areas of land, One is more island like, while the other is a solid brick of terrain.
+
+World Exploration:  
+How will a user explore your world?  How many cameras are there and which views will they display?  The more 
+cameras you include and the easier I can see your world, the better!  
+        The user will switch between existing cameras to see the world. There are three cameras in the world,
+        each focused on one of the three behaviors. Users will press "R" to switch between these cameras.
+
+
+Steering Behavior Description
+Flocking:  
+Describe which population are your flockers, and how they are continually moving throughout the world.
+        The tiny pirate men are the flockers, moving around between knee-level ocean and ground.
+        The tiny pirate men try to avoid the octopi circling them when nearby.
+
+Path Following:  
+Describe which population are your path followers.  Where are they going?  Why did you design your 
+path the way you did?  
+        The path followers are Octopi, circling the land area where the tiny pirates are stranded.
+        The path was chosen to be around these pirates to appear to be encircling them,
+        as well as because it is entirely underwater so it fits the Octopi's logical environment.
+
+Flow Field Following: 
+Describe which population are your flow field followers.  Include a short explanation of how your flow 
+field vectors were calculated.
+        Flow field follows are slow seagulls flying above the chunk of land.
+        Flow field is calculated by taking perlin noise for floats form 0-1, multiplying by 360,
+        and rotating a unit vector by that much to get a randomly directly vector.
+
+Area(s) of Resistance:  
+Where are your areas of resistance?  Which of your populations are moving through this area?  What is 
+the effect on that population?
+        The area of resistance is the water, and only affects the tiny pirates.
+        Whilst in the area of resistance, tiny pirates will move at 20% speed.
+
+Resources
+Resources used to guide steering algorithms:  
+Which resources did you use to guide you as you coded these behaviors?  How close are your algorithms 
+to the way that resource described the process?  
+        I used no resources for this, as I have done similar things in the past.
+        I reused the Flocking code from the original Flocking project, where my code was written to base
+        force strengths on distances, which ended up working very well.
+
+Asset Resources:  
+List all resources for your models, textures, sound clips, etc. even if you made them yourself.  
+        Every Model and animation - https://www.assetstore.unity3d.com/en/#!/content/18880
+        Every script otherwise - myself
+
+Other
+Other notes:  
+Anything you need me to know about your project.
+        No debug lines are shown for the fluid resistance since I wasn't sure how to represent that all water slowed pirates.
+
